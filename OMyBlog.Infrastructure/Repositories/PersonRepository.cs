@@ -19,11 +19,7 @@ public class PersonRepository : BaseRepository<PersonEntity>, IPersonRepository
     {
         var filter = Builders<PersonEntity>.Filter.Eq(x => x.Id, entity.Id);
         var update = Builders<PersonEntity>.Update.Set(x => x.About.Interests, entity.About.Interests);
-        var options = new FindOneAndUpdateOptions<PersonEntity>
-        {
-            ReturnDocument = ReturnDocument.After
-        };
-        
-        return await _collection.FindOneAndUpdateAsync(filter, update, options);
+
+        return await UpdateOne(filter, update);
     }
 }

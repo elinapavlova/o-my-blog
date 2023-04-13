@@ -70,6 +70,18 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity>
         return await result.FirstOrDefaultAsync();
     }
 
+    public async Task<TEntity> UpdateOne(FilterDefinition<TEntity> filter, UpdateDefinition<TEntity> update)
+    {
+        var options = new FindOneAndUpdateOptions<TEntity>
+        {
+            ReturnDocument = ReturnDocument.After
+        };
+        var updatedAt = DateTime.UtcNow;
+        update = update.Set(x => x.UpdatedAt, updatedAt);
+        var result = await _collection.FindOneAndUpdateAsync(filter, update, options);
+        return result;
+    }
+
     public async Task<TransactionContainer?> BeginTransaction()
     {
         using var session = await _client.StartSessionAsync();
