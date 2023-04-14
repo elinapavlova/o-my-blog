@@ -24,6 +24,7 @@ public class Startup
         services.Register<MongoDbContextProvider>(Configuration);
         services.Register<RepositoriesProvider>();
         services.Register<ServicesProvider>();
+        services.Register<ClientsProvider>();
         
         services.AddDirectoryBrowser();
         services.Configure<RouteOptions>(options => options.LowercaseUrls = true);

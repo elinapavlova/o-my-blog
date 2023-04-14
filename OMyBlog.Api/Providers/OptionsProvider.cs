@@ -11,5 +11,8 @@ public class OptionsProvider : IDependencyProviderWithConfig
     {
         var dbOptions = configuration.GetOptions<DbOptions>(OptionKeys.DbOptions);
         services.AddSingleton(dbOptions);
+
+        var elasticSearchOptions = configuration.GetOptions<ElasticSearchOptions>(OptionKeys.ElasticSearchOptions);
+        services.AddSingleton(elasticSearchOptions);
     }
 }
