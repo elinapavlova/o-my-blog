@@ -9,5 +9,6 @@ public class ServicesProvider : IDependencyProvider
     public void Register(IServiceCollection services)
     {
         services.AddScoped<IPersonService, PersonService>();
+        services.AddScoped<IHealthCheckService, HealthCheckService>();
     }
 }
