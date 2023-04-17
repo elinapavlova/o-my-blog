@@ -1,16 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OMyBlog.Domain.Contracts.Services;
 using OMyBlog.Domain.Dtos.Person;
+using OMyBlog.Domain.Filters.Search;
 
 namespace OMyBlog.Api.Controllers;
 
 [ApiController]
 [Route("/api/[controller]")]
-public class PersonController : Controller
+public class PersonsController : Controller
 {
     private readonly IPersonService _personService;
 
-    public PersonController(IPersonService personService)
+    public PersonsController(IPersonService personService)
     {
         _personService = personService;
     }
@@ -28,4 +29,12 @@ public class PersonController : Controller
         var result = await _personService.GetById(id);
         return Ok(result);
     }
+    
+    [HttpGet("search")]
+    public async Task<IActionResult> Search(PersonSearchFilter filter)
+    {
+        //var result = await _personService.Search(filter);
+        return Ok();
+    }
+// TODO SearchController ?
 }
