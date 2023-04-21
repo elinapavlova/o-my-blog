@@ -3,7 +3,7 @@ using Nest;
 using OMyBlog.Domain.Contracts.Clients;
 using OMyBlog.Domain.Options;
 
-namespace OMyBlog.Domain.Clients;
+namespace OMyBlog.Core.Clients;
 
 public class ElasticSearchClient : IElasticSearchClient
 {
