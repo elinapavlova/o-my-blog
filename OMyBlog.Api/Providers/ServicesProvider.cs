@@ -10,5 +10,6 @@ public class ServicesProvider : IDependencyProvider
     {
         services.AddScoped<IPersonService, PersonService>();
         services.AddScoped<IHealthCheckService, HealthCheckService>();
+        services.AddScoped<IElasticSearchService, ElasticSearchService>();
     }
 }
