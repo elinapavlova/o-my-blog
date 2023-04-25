@@ -38,8 +38,8 @@ public class BaseRepository<TEntity> : IBaseRepository<TEntity>
     {
         return ((BsonCollectionAttribute) entityType
                 .GetCustomAttributes(typeof(BsonCollectionAttribute), true)
-                .FirstOrDefault()!)
-            .CollectionName;
+                .FirstOrDefault())
+            ?.CollectionName;
     }
 
     public async Task Execute(Func<IMongoCollection<TEntity>, Task> func)
