@@ -7,12 +7,8 @@ namespace OMyBlog.Infrastructure.Repositories;
 
 public class PersonRepository : BaseRepository<PersonEntity>, IPersonRepository
 {
-    private readonly IMongoCollection<PersonEntity> _collection;
-    
     public PersonRepository(DbOptions options) : base(options)
     {
-        var database = new MongoClient(options.ConnectionString).GetDatabase(options.DatabaseName);
-        _collection = database.GetCollection<PersonEntity>(GetCollectionName(typeof(PersonEntity)));
     }
     
     public async Task<PersonEntity?> UpdateOne(PersonEntity entity)
