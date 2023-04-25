@@ -14,5 +14,8 @@ public class OptionsProvider : IDependencyProviderWithConfig
 
         var elasticSearchOptions = configuration.GetOptions<ElasticSearchOptions>(OptionKeys.ElasticSearchOptions);
         services.AddSingleton(elasticSearchOptions);
+
+        var rabbitMqOptions = configuration.GetOptions<RabbitMqOptions>(OptionKeys.RabbitMqOptions);
+        services.AddSingleton(rabbitMqOptions);
     }
 }

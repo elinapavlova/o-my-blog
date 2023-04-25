@@ -1,4 +1,4 @@
-﻿using OMyBlog.Domain.Clients;
+﻿using OMyBlog.Core.Clients;
 using OMyBlog.Domain.Contracts.Clients;
 using OMyBlog.Domain.Contracts.Providers;
 
@@ -10,5 +10,6 @@ public class ClientsProvider : IDependencyProvider
     {
         services.AddScoped<IMongoDbClient, MongoDbClient>();
         services.AddScoped<IElasticSearchClient, ElasticSearchClient>();
+        services.AddScoped<IRabbitMqClient, RabbitMqClient>();
     }
 }
